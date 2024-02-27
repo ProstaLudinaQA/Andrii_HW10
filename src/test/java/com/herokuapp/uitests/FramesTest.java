@@ -4,7 +4,7 @@ package com.herokuapp.uitests;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-//Ексклюзивна перша оренда: стильна квартира у Клубному будинку з дизайнерським ремонтом
+//1
 public class FramesTest extends BaseTest {
 
 
