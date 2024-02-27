@@ -4,11 +4,10 @@ package com.herokuapp.uitests;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-//Ексклюзивна перша оренда: стильна квартира у Клубному будинку з дизайнерським ремонтом
+//432344232343432
+//Мої нові змінні
 public class FramesTest extends BaseTest {
 
-
-    //Мої зміни домашє
     @Test
     public void switchToFrame() {
         driver.get("https://the-internet.herokuapp.com/nested_frames");
