@@ -6,6 +6,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class FramesTest extends BaseTest {
+
+
+    //Мої зміни домашє
     @Test
     public void switchToFrame() {
         driver.get("https://the-internet.herokuapp.com/nested_frames");
