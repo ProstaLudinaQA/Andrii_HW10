@@ -9,32 +9,25 @@ import org.testng.annotations.Test;
 
 public class FrameTest extends BaseTest {
 
-    @Test
-    private void switchToFrame (String frameName) {
+    @Test(dataProvider = "frameTextData")
+    public void switchToFrame (String frameMain, String subFrame, String text) {
         driver.get("https://the-internet.herokuapp.com/nested_frames");
-
-        if (frameName.equals("frame-top")) {
-            driver.switchTo().frame("frame-left");
-            driver.switchTo().frame("frame-middle");
-            driver.switchTo().frame("frame-right");
-
-        } else if (frameName.equals("frame-bottom")) {
-            driver.switchTo().frame("frame-bottom");
-        } else{
-            WebDriver frame = driver.switchTo().frame(frameName);
-        }
-        String bodyText = driver.findElement(By.xpath("//body")).getText();
-        Assert.assertEquals(bodyText, "LEFT", "Wrong frame");
+        if (!frameMain.equals("")) {
+        driver.switchTo().frame(frameMain);
+    }
+    driver.switchTo().frame(subFrame);
+    String body = driver.findElement(By.xpath("//body")).getText();
+        Assert.assertEquals(body,text);
+        driver.switchTo().defaultContent();
+        Assert.assertEquals(driver.findElements(By.xpath("//frameset/frame")).size(), 2);
     }
 
-        @DataProvider(name = "frameTextData")
+        @DataProvider
         public Object[][] frameTextData() {
             return new Object[][]{
-                    {"frame-top", "LEFT"},
-                    {"frame-top", "MIDDLE"},
-                    {"frame-top", "RIGHT"},
-                    {"frame-bottom", "BOTTOM"}
-            };
-        }
+                    {"", "frame-bottom", "BOTTOM"},
+                    {"frame-top", "frame-left", "LEFT"},
+                    {"frame-top", "frame-midle", "MIDDLE"},
+                    {"frame-top", "frame-right", "RIGHT"}
+            };}}
 
-}
